@@ -61,13 +61,13 @@ RUN \
   } >> /etc/php84/conf.d/apcu.ini && \
   { \
     echo 'opcache.enable=1'; \
-    echo 'opcache.interned_strings_buffer=32'; \
+    echo 'opcache.interned_strings_buffer=64'; \
     echo 'opcache.max_accelerated_files=10000'; \
-    echo 'opcache.memory_consumption=128'; \
+    echo 'opcache.memory_consumption=256'; \
     echo 'opcache.save_comments=1'; \
     echo 'opcache.revalidate_freq=60'; \
     echo 'opcache.jit=1255'; \
-    echo 'opcache.jit_buffer_size=128M'; \
+    echo 'opcache.jit_buffer_size=256'; \
   } >> "/etc/php84/conf.d/00_opcache.ini" && \
   { \
     echo 'memory_limit=-1'; \
@@ -78,6 +78,13 @@ RUN \
     echo 'output_buffering=0'; \
     echo 'always_populate_raw_post_data=-1'; \
   } >> "/etc/php84/conf.d/nextcloud.ini" && \
+  { \
+    echo 'pm = dynamic'; \
+    echo 'pm.max_children = 120'; \
+    echo 'pm.start_servers = 12'; \
+    echo 'pm.min_spare_servers = 6'; \
+    echo 'pm.max_spare_servers = 18'; \
+  } >> "/etc/php84/php-fpm.d/zzz-pm.conf" && \
   echo "**** install nextcloud ****" && \
   mkdir -p \
     /app/www/src/ && \
