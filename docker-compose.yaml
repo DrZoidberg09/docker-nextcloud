@@ -3,7 +3,7 @@ services:
     build: 
       context: ./
       args:
-        - NEXTCLOUD_VERSION=${NEXTCLOUD_VERSION}
+        - NEXTCLOUD_RELEASE=${NEXTCLOUD_RELEASE}
     environment:
       - SERVICE_URL_NEXTCLOUD_80
       - PUID=1000
