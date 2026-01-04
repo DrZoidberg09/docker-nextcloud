@@ -6,8 +6,7 @@ FROM ghcr.io/linuxserver/baseimage-alpine-nginx:3.22
 ARG BUILD_DATE
 ARG VERSION
 ARG NEXTCLOUD_RELEASE
-LABEL build_version="Linuxserver.io version:- ${VERSION} Build-date:- ${BUILD_DATE}"
-LABEL maintainer="aptalca"
+LABEL build_version="Linuxserver.io version:- ${NEXTCLOUD_RELEASE} Soziale Vision Fork"
 
 # environment settings
 ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so"
@@ -95,7 +94,7 @@ RUN \
   rm -rf /app/www/src/updater && \
   mkdir -p /app/www/src/data && \
   chmod +x /app/www/src/occ && \
-  printf "Linuxserver.io version: ${VERSION}\nBuild-date: ${BUILD_DATE}" > /build_version && \
+  printf "Nextcloud ${NEXTCLOUD_RELEASE} für Soziale Vision" > /build_version && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/*
