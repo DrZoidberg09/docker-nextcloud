@@ -1,0 +1,28 @@
+services:
+  nextcloud:
+    build: 
+      context: ./
+      args:
+        - NEXTCLOUD_RELEASE=${NEXTCLOUD_RELEASE}
+    environment:
+      - SERVICE_URL_NEXTCLOUD_80
+      - PUID=1000
+      - PGID=1000
+      - 'TZ=${TZ:-Europe/Berlin}'
+    volumes:
+      - '/var/lib/docker/volumes/wcgc84k44ssgogooks8wsc0o_nextcloud-config/_data:/config'
+      - '/var/lib/docker/volumes/wcgc84k44ssgogooks8wsc0o_nextcloud-data/_data:/data'
+      - '/var/lib/docker/volumes/wcgc84k44ssgogooks8wsc0o_nextcloud-custom_apps:/app/www/public/custom_apps'
+    labels:
+      - traefik.http.middlewares.nextcloudstsSeconds.headers.stsSeconds=31536000
+      - traefik.http.middlewares.nextcloudstsIncludeSubdomains.headers.stsIncludeSubdomains=true
+      - traefik.http.middlewares.nextcloudstsPreload.headers.stsPreload=true
+    healthcheck:
+      test:
+        - CMD
+        - curl
+        - '-f'
+        - 'http://127.0.0.1:80'
+      interval: 2s
+      timeout: 10s
+      retries: 15
