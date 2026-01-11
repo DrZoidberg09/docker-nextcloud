@@ -61,7 +61,7 @@ RUN \
   } >> /etc/php84/conf.d/apcu.ini && \
   { \
     echo 'opcache.enable=1'; \
-    echo 'opcache.interned_strings_buffer=64'; \
+    echo 'opcache.interned_strings_buffer=256'; \
     echo 'opcache.max_accelerated_files=10000'; \
     echo 'opcache.memory_consumption=256'; \
     echo 'opcache.save_comments=1'; \
