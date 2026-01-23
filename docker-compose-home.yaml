@@ -16,6 +16,8 @@ services:
       - traefik.http.middlewares.nextcloudstsSeconds.headers.stsSeconds=31536000
       - traefik.http.middlewares.nextcloudstsIncludeSubdomains.headers.stsIncludeSubdomains=true
       - traefik.http.middlewares.nextcloudstsPreload.headers.stsPreload=true
+      - traefik.http.middlewares.nextcloud-headers.headers.customrequestheaders.X-Forwarded-Proto=https
+      - traefik.http.middlewares.nextcloud-headers.headers.customrequestheaders.X-Forwarded-For=true
     healthcheck:
       test:
         - CMD
