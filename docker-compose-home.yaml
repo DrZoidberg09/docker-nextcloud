@@ -12,6 +12,7 @@ services:
     volumes:
       - '/hostdata/nextcloud_config:/config'
       - '/hostdata/nextcloud:/data'
+      - '/hostdata/Share:/share'
     labels:
       - traefik.http.middlewares.nextcloudstsSeconds.headers.stsSeconds=31536000
       - traefik.http.middlewares.nextcloudstsIncludeSubdomains.headers.stsIncludeSubdomains=true
