@@ -9,6 +9,8 @@ services:
       - PUID=1000
       - PGID=1000
       - 'TZ=${TZ:-Europe/Berlin}'
+    ports:
+      - "8181:80"
     volumes:
       - '/hostdata/nextcloud_config:/config'
       - '/hostdata/nextcloud:/data'
