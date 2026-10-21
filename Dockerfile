@@ -13,7 +13,7 @@ ENV LD_PRELOAD="/usr/lib/preloadable_libiconv.so"
 
 RUN \
   echo "**** install runtime packages ****" && \
-  apk update && apk upgrade \
+  apk update && apk upgrade && \
   apk add --no-cache \
     ffmpeg \
     gnu-libiconv \
