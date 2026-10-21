@@ -33,7 +33,6 @@ RUN \
     php85-intl \
     php85-ldap \
     php85-pcntl \
-    php85-pdo_mysql \
     php85-pdo_pgsql \
     php85-pdo_sqlite \
     php85-pecl-imagick \
